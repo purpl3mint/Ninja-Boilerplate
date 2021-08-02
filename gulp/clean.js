@@ -5,7 +5,7 @@ function cleanBuild() {
 }
 
 function cleanReport() {
-    return del('report')
+    return del('reports')
 }
 
 module.exports = {

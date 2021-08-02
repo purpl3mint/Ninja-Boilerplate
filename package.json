@@ -4,7 +4,12 @@
   "description": "Boilerplate for HTML and CSS code",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp start",
+    "serve": "gulp serve",
+    "lighthouse": "gulp lighthouse",
+    "test": "npm run stylelint-fix && eslint ./src/js/** --fix",
+    "stylelint-fix": "stylelint ./src/styles/**/*.scss --fix --syntax scss",
+    "eslint-fix": "eslint ./src/js/** --fix"
   },
   "repository": {
     "type": "git",
@@ -32,6 +37,7 @@
     "browser-sync": "^2.27.5",
     "chrome-launcher": "^0.14.0",
     "del": "^6.0.0",
+    "editorconfig-cli": "^0.3.0",
     "eslint": "^7.32.0",
     "eslint-config-htmlacademy": "^4.0.2",
     "eslint-config-standard": "^16.0.3",
