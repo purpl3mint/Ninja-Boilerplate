@@ -1,0 +1,7 @@
+@mixin open-sans-normal($fontSize, $lineHeight){
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+}
