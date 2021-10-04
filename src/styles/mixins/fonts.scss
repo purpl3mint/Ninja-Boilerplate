@@ -1,5 +1,5 @@
-@mixin open-sans-normal($fontSize, $lineHeight){
-  font-family: 'Open Sans', sans-serif;
+@mixin roboto-normal($fontSize, $lineHeight){
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: $fontSize;
