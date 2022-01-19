@@ -7,6 +7,8 @@ const lighthouse = require('lighthouse')
 const chromeLauncher = require('chrome-launcher')
 const { write } = require('lighthouse/lighthouse-cli/printer')
 const reportGenerator = require('lighthouse/report/report-generator')
+const compression = require('compression')
+const http2 = require('http2')
 
 const config = require('./config')
 
@@ -18,8 +20,15 @@ async function getNameHTMLFiles() {
 
 function startServer() {
   return server.init({
-    server: config.buildPath,
+    server: {
+      baseDir: config.buildPath,
+      middleware: function(req,res,next){
+        let gzip = compression();
+        gzip(req,res,next);
+      }
+    },
     port: config.lighthouse.PORT,
+    httpModule: http2,
     notify: false,
     open: false,
     cors: true

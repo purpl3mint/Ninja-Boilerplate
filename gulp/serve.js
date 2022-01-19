@@ -1,4 +1,6 @@
 const gulp = require('gulp')
+const compression = require('compression')
+const http2 = require('http2')
 
 const imageMinify = require('./imageMinify')
 const styles = require('./styles')
@@ -9,7 +11,14 @@ const server = require('browser-sync').create()
 
 module.exports = function serve(cb) {
     server.init({
-        server: 'build',
+        server: {
+            baseDir: 'build',
+            middleware: function(req,res,next){
+                let gzip = compression();
+                gzip(req,res,next);
+            }
+        },
+        httpModule: http2,
         notify: false,
         open: true,
         cors: true
