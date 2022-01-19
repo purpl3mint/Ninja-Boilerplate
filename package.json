@@ -1,6 +1,6 @@
 {
   "name": "ninja-boilerplate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Boilerplate for HTML and CSS code",
   "main": "index.js",
   "scripts": {
@@ -36,6 +36,7 @@
     "@babel/preset-env": "^7.14.8",
     "browser-sync": "^2.27.5",
     "chrome-launcher": "^0.14.0",
+    "critical": "^4.0.1",
     "del": "^6.0.0",
     "editorconfig-cli": "^0.3.0",
     "eslint": "^7.32.0",
@@ -63,6 +64,7 @@
     "gulp-stylelint": "^13.0.0",
     "gulp-terser": "^2.0.1",
     "gulp-w3c-html-validator": "^2.0.1",
+    "gulp-webp": "^4.0.1",
     "lighthouse": "^8.1.0",
     "node-sass": "^6.0.1",
     "pug": "^3.0.2",

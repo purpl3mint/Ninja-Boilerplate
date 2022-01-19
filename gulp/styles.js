@@ -8,6 +8,9 @@ const sourcemaps = require('gulp-sourcemaps')
 const gulpStylelint = require('gulp-stylelint')
 const rename = require('gulp-rename')
 
+//WARNING
+//Commented sourcemaps because it takes a lot of space in build
+
 module.exports = function styles() {
     return gulp.src('src/styles/*.scss')
         .pipe(plumber())
@@ -32,7 +35,7 @@ module.exports = function styles() {
           }, details => {
             console.log(`${details.name}: Original size:${details.stats.originalSize} - Minified size: ${details.stats.minifiedSize}`)
           }))
-        .pipe(sourcemaps.write())
+        //.pipe(sourcemaps.write())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('build/css'))
 }

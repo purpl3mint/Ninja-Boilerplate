@@ -1,5 +1,6 @@
 const gulp = require('gulp')
 const imagemin = require('gulp-imagemin')
+const webp = require('gulp-webp')
 
 module.exports = function imageMinify(cb) {
   return gulp.src('src/img/*.{gif,png,jpg,svg,webp}')
@@ -17,5 +18,6 @@ module.exports = function imageMinify(cb) {
         ]
       })
     ]))
+    .pipe(webp())
     .pipe(gulp.dest('build/img'))
 }

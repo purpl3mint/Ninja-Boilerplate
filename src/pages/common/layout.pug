@@ -6,11 +6,13 @@ html(lang="ru")
             title My Site 
             meta(content="width=device-width, initial-scale=1" name="viewport")
             meta(content="ie=edge" http-equiv="x-ua-compatible")
+            meta(content="My Site" name="description")
             link(rel="preconnect" href="https://fonts.googleapis.com")
             link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
-            link(href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet")
-            link(rel="stylesheet" href="./css/normalize.css")
-            link(rel="stylesheet" href="./css/style.min.css")
+            link(rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap")
+            link(rel="stylesheet" media="screen" href="./css/normalize.min.css")
+            link(rel="stylesheet" media="screen" href="./css/style.min.css")
+            link(rel="icon" href="favicon.ico")
     body
         block header
             include header 
@@ -18,4 +20,4 @@ html(lang="ru")
         block footer 
             include footer 
         block scripts
-            script(src="/main.js")
+            script(src="./js/main.min.js" async)

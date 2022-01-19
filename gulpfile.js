@@ -8,8 +8,11 @@ const script = require('./gulp/script')
 const imageMinify = require('./gulp/imageMinify')
 const serve = require('./gulp/serve')
 const lighthouse = require('./gulp/lighthouse')
+const favicon = require('./gulp/favicon')
+const criticalGen = require('./gulp/critical')
 
-const build = gulp.series(cleanBuild, pug2html, normalize, styles, script, imageMinify)
+
+const build = gulp.series(cleanBuild, pug2html, normalize, styles, script, imageMinify, favicon, criticalGen)
 
 module.exports.start = gulp.series(build)
 
