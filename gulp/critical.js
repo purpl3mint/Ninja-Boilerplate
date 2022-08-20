@@ -1,7 +1,7 @@
-const gulp = require('gulp')
-const critical = require('critical')
+import gulp from 'gulp'
+import critical from 'critical'
 
-module.exports = function criticalGen (cb) {
+export function criticalGen (cb) {
   return critical.generate({
     inline: true,
     base: './build/',

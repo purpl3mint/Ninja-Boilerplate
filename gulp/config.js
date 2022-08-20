@@ -1,9 +1,12 @@
-const path = require('path')
+import path from 'path'
+import {fileURLToPath} from 'url';
 
-const root = path.join(__dirname, '../')
+const __filename = fileURLToPath(import.meta.url);
+
+const root = path.join(path.dirname(__filename), '../')
 const src = path.join(root, 'src')
 
-module.exports = {
+export const config = {
   root,
   src,
   buildPath: path.join(root, '/build'),

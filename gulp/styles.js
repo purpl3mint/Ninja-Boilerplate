@@ -1,19 +1,22 @@
-const gulp = require('gulp')
-const plumber = require('gulp-plumber')
-const sass = require('gulp-sass')(require('sass'))
-const autoprefixer = require('gulp-autoprefixer')
-const shorthand = require('gulp-shorthand')
-const cleanCSS = require('gulp-clean-css')
-const sourcemaps = require('gulp-sourcemaps')
-const gulpStylelint = require('gulp-stylelint')
-const rename = require('gulp-rename')
+import gulp from 'gulp'
+import plumber from 'gulp-plumber'
+import dartSass from 'sass'
+import gulpSass from 'gulp-sass'
+import autoprefixer from 'gulp-autoprefixer'
+import shorthand from 'gulp-shorthand'
+import cleanCSS from 'gulp-clean-css'
+import sourcemaps from 'gulp-sourcemaps'
+import gulpStylelint from 'gulp-stylelint'
+import rename from 'gulp-rename'
 
+const sass = gulpSass(dartSass)
 //WARNING
 //Commented sourcemaps because it takes a lot of space in build
 
-module.exports = function styles() {
+export function styles() {
     return gulp.src('src/styles/*.scss')
         .pipe(plumber())
+        /*
         .pipe(gulpStylelint({
             failAfterError: false,
             reporters: [
@@ -23,6 +26,8 @@ module.exports = function styles() {
               }
             ]
           }))
+        */
+        //.pipe(gulpStylelint())
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(autoprefixer({

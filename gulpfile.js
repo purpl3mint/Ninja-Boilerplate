@@ -1,21 +1,41 @@
-const gulp = require('gulp')
+import gulp from 'gulp'
 
-const {cleanBuild, cleanReport} = require('./gulp/clean')
-const pug2html = require('./gulp/pug2html')
-const normalize = require('./gulp/normalize')
-const styles = require('./gulp/styles')
-const script = require('./gulp/script')
-const imageMinify = require('./gulp/imageMinify')
-const serve = require('./gulp/serve')
-const lighthouse = require('./gulp/lighthouse')
-const favicon = require('./gulp/favicon')
-const criticalGen = require('./gulp/critical')
+import { cleanBuild, cleanReport } from './gulp/clean.js'
+import { pug2html } from './gulp/pug2html.js'
+import { normalize } from './gulp/normalize.js'
+import { styles } from './gulp/styles.js'
+import { script } from './gulp/script.js'
+import { imageMinify } from './gulp/imageMinify.js'
+import { serve as serveStart } from './gulp/serve.js'
+import { lighthouse as lighthouseRunner } from './gulp/lighthouse.js'
+import { favicon } from './gulp/favicon.js'
+import { criticalGen } from './gulp/critical.js'
+
+const createGulpTask = (tag, f) => {
+    gulp.task(tag, (done) => {
+        f();
+        done();
+    })
+}
+
+createGulpTask('cleanBuild', cleanBuild)
+createGulpTask('cleanReport', cleanReport)
+createGulpTask('pug2html', pug2html)
+createGulpTask('normalize', normalize)
+createGulpTask('styles', styles)
+createGulpTask('script', script)
+createGulpTask('imageMinify', imageMinify)
+createGulpTask('favicon', favicon)
+createGulpTask('serveStart', serveStart)
+createGulpTask('lighthouseRunner', lighthouseRunner)
+//createGulpTask('criticalGen', criticalGen)
 
 
-const build = gulp.series(cleanBuild, pug2html, normalize, styles, script, imageMinify, favicon, criticalGen)
+//const build = gulp.series(cleanBuild, pug2html, normalize, styles, script, imageMinify, favicon, criticalGen)
+const build = gulp.series('cleanBuild', 'pug2html', 'normalize', 'styles', 'script', 'imageMinify', 'favicon')
 
-module.exports.start = gulp.series(build)
+export const start = gulp.series(build)
 
-module.exports.serve = gulp.series(build, serve)
+export const serve = gulp.series(build, 'serveStart')
 
-module.exports.lighthouse = gulp.series(cleanReport, lighthouse)
+export const lighthouse = gulp.series('cleanReport', 'lighthouseRunner')

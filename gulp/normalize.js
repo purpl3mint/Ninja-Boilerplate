@@ -1,9 +1,9 @@
-const gulp = require('gulp')
-const plumber = require('gulp-plumber')
-const cleanCSS = require('gulp-clean-css')
-const rename = require('gulp-rename')
+import gulp from 'gulp'
+import plumber from 'gulp-plumber'
+import cleanCSS from 'gulp-clean-css'
+import rename from 'gulp-rename'
 
-module.exports = function normalize() {
+export function normalize() {
   return gulp.src('src/styles/normalize/normalize.css')
       .pipe(plumber())
       .pipe(cleanCSS({

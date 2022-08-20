@@ -1,16 +1,18 @@
-const path = require('path')
-const fs = require('fs').promises
-const open = require('open')
-const server = require('browser-sync').create()
-const del = require('del')
-const lighthouse = require('lighthouse')
-const chromeLauncher = require('chrome-launcher')
-const { write } = require('lighthouse/lighthouse-cli/printer')
-const reportGenerator = require('lighthouse/report/report-generator')
-const compression = require('compression')
-const http2 = require('http2')
+import path from 'path'
+//const fs = require('fs').promises
+import { promises as fs } from 'fs'
+import open from 'open'
+import browserSync from 'browser-sync'
+const server = browserSync.create()
+import { deleteAsync as del } from 'del'
+//const lighthouse = require('lighthouse')
+import chromeLauncher from 'chrome-launcher'
+import { write } from 'lighthouse/lighthouse-cli/printer.js'
+import reportGenerator from 'lighthouse/report/generator/report-generator.js'
+import compression from 'compression'
+import http2 from 'http2'
 
-const config = require('./config')
+import { config } from './config.js'
 
 async function getNameHTMLFiles() {
   const files = await fs.readdir(config.buildPath)
@@ -55,7 +57,7 @@ async function runLighthouse(fileName) {
   await write(reportGenerator.generateReportHtml(result.lhr), 'html', path.join(config.lighthouse.reportPath, fileName))
 }
 
-module.exports = async function lighthouse(cb) {
+export async function lighthouse(cb) {
   await del(config.lighthouse.reportPath)
   await fs.mkdir(config.lighthouse.reportPath)
 

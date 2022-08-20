@@ -1,11 +1,11 @@
-const gulp = require('gulp')
-const eslint = require('gulp-eslint')
-const babel = require('gulp-babel')
-const terser = require('gulp-terser')
-const rename = require('gulp-rename')
-const sourcemaps = require('gulp-sourcemaps')
+import gulp from 'gulp'
+import eslint from 'gulp-eslint'
+import babel from 'gulp-babel'
+import terser from 'gulp-terser'
+import rename from 'gulp-rename'
+import sourcemaps from 'gulp-sourcemaps'
 
-module.exports = function script() {
+export function script() {
     return gulp.src('src/js/main.js')
         .pipe(eslint())
         .pipe(eslint.format())

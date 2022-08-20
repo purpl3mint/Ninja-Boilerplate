@@ -1,14 +1,9 @@
-const del = require('del')
+import { deleteSync as del } from 'del'
 
-function cleanBuild() {
+export function cleanBuild() {
     return del('build')
 }
 
-function cleanReport() {
+export function cleanReport() {
     return del('reports')
-}
-
-module.exports = {
-    cleanBuild,
-    cleanReport
 }

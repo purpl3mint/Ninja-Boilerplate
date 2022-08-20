@@ -1,6 +1,6 @@
-const gulp = require('gulp')
+import gulp from 'gulp'
 
-module.exports = function favicon(cb) {
+export function favicon(cb) {
   return gulp.src('src/favicon/*.ico')
     .pipe(gulp.dest('build'))
 }

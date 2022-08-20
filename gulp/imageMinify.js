@@ -1,9 +1,10 @@
-const gulp = require('gulp')
-const imagemin = require('gulp-imagemin')
-const webp = require('gulp-webp')
+import gulp from 'gulp'
+import imagemin from 'gulp-imagemin'
+import webp from 'gulp-webp'
 
-module.exports = function imageMinify(cb) {
+export function imageMinify(cb) {
   return gulp.src('src/img/*.{gif,png,jpg,svg,webp}')
+    /*
     .pipe(imagemin([
       imagemin.gifsicle({ interlaced: true }),
       imagemin.mozjpeg({
@@ -18,6 +19,8 @@ module.exports = function imageMinify(cb) {
         ]
       })
     ]))
+    */
+    .pipe(imagemin())
     .pipe(webp())
     .pipe(gulp.dest('build/img'))
 }

@@ -1,15 +1,16 @@
-const gulp = require('gulp')
-const compression = require('compression')
-const http2 = require('http2')
+import gulp from 'gulp'
+import compression from 'compression'
+import http2 from 'http2'
 
-const imageMinify = require('./imageMinify')
-const styles = require('./styles')
-const pug2html = require('./pug2html')
-const script = require('./script')
+import { imageMinify } from './imageMinify.js'
+import { styles } from './styles.js'
+import { pug2html } from './pug2html.js'
+import { script } from './script.js'
 
-const server = require('browser-sync').create()
+import browserSync from 'browser-sync'
+const server = browserSync.create()
 
-module.exports = function serve(cb) {
+export function serve(cb) {
     server.init({
         server: {
             baseDir: 'build',
@@ -29,6 +30,4 @@ module.exports = function serve(cb) {
     gulp.watch('src/js/**/*.js', gulp.series(script)).on('change', server.reload)
     gulp.watch('src/pages/**/*.pug', gulp.series(pug2html)).on('change', server.reload)
     gulp.watch('build/*.html').on('change', server.reload)
-
-    return cb()
 }
